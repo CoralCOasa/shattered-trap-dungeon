@@ -1,0 +1,31 @@
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.4.1'
+    }
+}
+
+allprojects {
+
+    ext {
+        appName = 'Shattered Trap Dungeon'
+        appPackageName = 'com.shatteredtrap.shatteredpixeldungeon'
+
+        appVersionCode = 356
+        appVersionName = '0.3'
+
+        appAndroidCompileSDK = 28
+        appAndroidMinSDK = 9
+        appAndroidTargetSDK = 28
+    }
+    version = appVersionName
+
+    repositories {
+        google()
+        jcenter()
+    }
+
+}
