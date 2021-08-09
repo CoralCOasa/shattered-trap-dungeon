@@ -45,6 +45,7 @@ import com.shatteredtrap.shatteredpixeldungeon.actors.buffs.Poison;
 import com.shatteredtrap.shatteredpixeldungeon.actors.buffs.Roots;
 import com.shatteredtrap.shatteredpixeldungeon.actors.buffs.Slow;
 import com.shatteredtrap.shatteredpixeldungeon.actors.buffs.Weakness;
+import com.shatteredtrap.shatteredpixeldungeon.levels.features.Chasm;
 import com.shatteredtrap.shatteredpixeldungeon.scenes.GameScene;
 import com.shatteredtrap.shatteredpixeldungeon.sprites.DemonRatSprite;
 import com.shatteredtrap.shatteredpixeldungeon.sprites.RatSprite;
@@ -106,37 +107,39 @@ public class DemonRat extends Mob {
 
 	@Override
 	public void die( Object cause ) {
-		int rng = Random.Int(8);
-		switch(rng){
-			case 0:
-				GameScene.add( Blob.seed( pos, 160, Inferno.class ) );
-				break;
-			case 1:
-				GameScene.add( Blob.seed( pos, 160, Blizzard.class ) );
-				break;
-			case 2:
-				GameScene.add( Blob.seed( pos, 160, SmokeScreen.class ) );
-				break;
-			case 3:
-				GameScene.add( Blob.seed( pos, 160, StormCloud.class ) );
-				break;
-			case 4:
-				CorrosiveGas corrosiveGas = Blob.seed(pos, 160, CorrosiveGas.class);
-				corrosiveGas.setStrength(5);
-				GameScene.add(corrosiveGas);
-				break;
-			case 5:
-				GameScene.add( Blob.seed( pos, 160, ParalyticGas.class ) );
-				break;
-			case 6:
-				GameScene.add( Blob.seed( pos, 160, ToxicGas.class ) );
-				break;
-			case 7:
-				GameScene.add( Blob.seed( pos, 160, ConfusionGas.class ) );
-				break;
-			case 8:
-				GameScene.add( Blob.seed( pos, 160, DreamGas.class ) );
-				break;
+		if (cause != Chasm.class) {
+			int rng = Random.Int(8);
+			switch (rng) {
+				case 0:
+					GameScene.add(Blob.seed(pos, 160, Inferno.class));
+					break;
+				case 1:
+					GameScene.add(Blob.seed(pos, 160, Blizzard.class));
+					break;
+				case 2:
+					GameScene.add(Blob.seed(pos, 160, SmokeScreen.class));
+					break;
+				case 3:
+					GameScene.add(Blob.seed(pos, 160, StormCloud.class));
+					break;
+				case 4:
+					CorrosiveGas corrosiveGas = Blob.seed(pos, 160, CorrosiveGas.class);
+					corrosiveGas.setStrength(5);
+					GameScene.add(corrosiveGas);
+					break;
+				case 5:
+					GameScene.add(Blob.seed(pos, 160, ParalyticGas.class));
+					break;
+				case 6:
+					GameScene.add(Blob.seed(pos, 160, ToxicGas.class));
+					break;
+				case 7:
+					GameScene.add(Blob.seed(pos, 160, ConfusionGas.class));
+					break;
+				case 8:
+					GameScene.add(Blob.seed(pos, 160, DreamGas.class));
+					break;
+			}
 		}
 		super.die(cause);
 	}

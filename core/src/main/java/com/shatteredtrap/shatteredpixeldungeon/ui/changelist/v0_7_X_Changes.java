@@ -157,7 +157,7 @@ public class v0_7_X_Changes {
 
 		changes.addButton( new ChangeButton(new Image(Assets.TILES_SEWERS, 1*16, 6*16, 16, 16), "New level feelings",
 				"There are two new level feelings:\n\n" +
-						"-one that spawns 1-2 animated statues and decorates hallways\n\n" +
+						"-one that spawns animated statues and decorates hallways\n\n" +
 						"-one that spawns more traps, enemies and loot"));
 
 		changes.addButton( new ChangeButton(new ItemSprite(ItemSpriteSheet.LOOTBAG, new ItemSprite.Glowing(0xFFFFFF)), "Minibosses",

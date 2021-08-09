@@ -184,7 +184,7 @@ public abstract class RegularLevel extends Level {
 	
 	protected int nTraps() {
 		if(this.feeling==Feeling.STUFF){
-			return Random.NormalIntRange( 10, (int)(30+(Dungeon.depth*1.6)) );
+			return Random.NormalIntRange( 10, (int)(25+(Dungeon.depth*1.5)) );
 		}
 		return Random.NormalIntRange( 5, (int)(15+(Dungeon.depth*1.3)) );
 	}

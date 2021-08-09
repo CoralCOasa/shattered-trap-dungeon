@@ -53,7 +53,7 @@ public class AboutScene extends PixelScene {
 	private static final String TXT_SHPX2 =
 			"Created by a random PD fan.";
 
-	private static final String LNK_SHPX2 = "githublinkplaceholder";
+	private static final String LNK_SHPX2 = "github.com/CoralCOasa/shattered-trap-dungeon";
 
 	private static final String TTL_WATA = "Pixel Dungeon";
 

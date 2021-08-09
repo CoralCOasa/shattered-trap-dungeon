@@ -24,6 +24,7 @@ package com.shatteredtrap.shatteredpixeldungeon.actors.mobs;
 import com.shatteredtrap.shatteredpixeldungeon.actors.Char;
 import com.shatteredtrap.shatteredpixeldungeon.actors.buffs.Chill;
 import com.shatteredtrap.shatteredpixeldungeon.items.bombs.Bomb;
+import com.shatteredtrap.shatteredpixeldungeon.levels.features.Chasm;
 import com.shatteredtrap.shatteredpixeldungeon.sprites.BombSpiderSprite;
 import com.shatteredtrap.shatteredpixeldungeon.sprites.CharSprite;
 import com.shatteredtrap.shatteredpixeldungeon.sprites.DancingSkeletonSprite;
@@ -73,7 +74,7 @@ public class BombSpider extends Mob {
 
 	@Override
 	public void die( Object cause ) {
-		if (buff(Chill.class) != null){
+		if (buff(Chill.class) != null || cause == Chasm.class){
 			super.die(cause);
 			return;
 		}
