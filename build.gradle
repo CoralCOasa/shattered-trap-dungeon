@@ -15,7 +15,7 @@ allprojects {
         appPackageName = 'com.shatteredtrap.shatteredpixeldungeon'
 
         appVersionCode = 356
-        appVersionName = '0.3'
+        appVersionName = '0.3.1'
 
         appAndroidCompileSDK = 28
         appAndroidMinSDK = 9

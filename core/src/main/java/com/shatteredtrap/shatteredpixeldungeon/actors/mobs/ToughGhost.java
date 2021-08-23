@@ -70,6 +70,10 @@ public class ToughGhost extends Mob {
 		int dm = Random.NormalIntRange( 2, 4 );
 		enemy.damage( dm, new Damamdawawd() );
 		enemy.sprite.emitter().burst(ShadowParticle.UP, dm);
+		if (!enemy.isAlive() && enemy == Dungeon.hero) {
+			Dungeon.fail( getClass() );
+			GLog.n( "You were killed by dark energy..." );
+		}
 		damage = super.attackProc( enemy, damage );
 		return damage;
 	}

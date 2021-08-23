@@ -40,8 +40,8 @@ public class OvergrowthTrap extends Trap {
 	public void activate() {
 		for (int i = 0; i < Dungeon.level.length(); i++){
 			GameScene.add( Blob.seed(i, 15, Regrowth.class));
-			Sample.INSTANCE.play(Assets.SND_PLANT);
 		}
+		Sample.INSTANCE.play(Assets.SND_PLANT,10f);
 	}
 }
 

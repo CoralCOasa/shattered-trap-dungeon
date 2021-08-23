@@ -98,6 +98,10 @@ public class ReclaimTrap extends TargetedSpell {
 				GLog.w("Store a trap first!");
 				return;
 			}
+			if(quantity==1) {
+				GLog.w("You can't preserve with just one reclaim trap!");
+				return;
+			}
 			ReclaimTrap2 preserved = Dungeon.hero.belongings.getItem( ReclaimTrap2.class );
 			if (preserved != null){
 				GLog.w("You already have a preserved trap!");

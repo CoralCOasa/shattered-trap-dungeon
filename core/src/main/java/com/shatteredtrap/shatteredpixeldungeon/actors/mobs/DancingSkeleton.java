@@ -78,17 +78,4 @@ public class DancingSkeleton extends Mob {
 		return Random.NormalIntRange(0, 2);
 	}
 
-
-	@Override
-	public void die( Object cause ) {
-
-		super.die(cause);
-
-		if (cause == Chasm.class) return;
-
-		if (Dungeon.level.heroFOV[pos]) {
-			Sample.INSTANCE.play(Assets.SND_BONES);
-		}
-	}
-
 }

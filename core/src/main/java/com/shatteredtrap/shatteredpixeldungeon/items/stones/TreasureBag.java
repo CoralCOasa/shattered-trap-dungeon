@@ -215,7 +215,11 @@ public class TreasureBag extends InventoryStone {
 					@Override
 					protected void onClick() {
 						super.onClick();
-						curGuess.identify().doPickUp(Dungeon.hero);
+
+						if (curGuess.identify().doPickUp( Dungeon.hero )) {
+						} else {
+							Dungeon.level.drop( curGuess, Dungeon.hero.pos ).sprite.drop();
+						}
 						hide();
 					}
 				};

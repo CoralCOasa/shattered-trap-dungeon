@@ -42,6 +42,7 @@ import com.shatteredtrap.shatteredpixeldungeon.sprites.KeyChainSprite;
 import com.shatteredtrap.shatteredpixeldungeon.sprites.MissileSprite;
 import com.shatteredtrap.shatteredpixeldungeon.sprites.RatSprite;
 import com.shatteredtrap.shatteredpixeldungeon.utils.BArray;
+import com.shatteredtrap.shatteredpixeldungeon.utils.GLog;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Callback;
 import com.watabou.utils.PathFinder;
@@ -136,6 +137,10 @@ public class KeyChain extends Mob {
 		int dm = Random.NormalIntRange( 3, 8 );
 		enemy.damage( dm, new ToughGhost.Damamdawawd() );
 		enemy.sprite.emitter().burst(ShadowParticle.UP, dm);
+		if (!enemy.isAlive() && enemy == Dungeon.hero) {
+			Dungeon.fail( getClass() );
+			GLog.n( "You were killed by dark energy..." );
+		}
 		damage = super.attackProc( enemy, damage );
 		return damage;
 	}

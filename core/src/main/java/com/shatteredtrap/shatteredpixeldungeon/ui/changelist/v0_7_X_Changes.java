@@ -256,8 +256,8 @@ public class v0_7_X_Changes {
 
 		changes.addButton( new ChangeButton(new ShockerBlockSprite(), "Shocker block",
 				"Shocker blocks are new caves enemies.\n\n" +
-						"They have 4x attack speed and never miss, but their attacks cause knockback that interrupts the follow-ups.\n\n" +
-						"They deal additional electric damage which is further increased if the target stands on water.\n\n" +
+						"They have 3x attack speed and never miss, but their attacks cause knockback that interrupts the follow-ups.\n\n" +
+						"They deal additional electric damage if the target stands on water.\n\n" +
 						"They release a shocking field when killed, which spreads to nearby water.\n\n"+
 						"They may drop shocking brews when killed."));
 

@@ -39,17 +39,17 @@ public class DancingSkeletonSprite extends MobSprite {
 		idle = new Animation( 2, true );
 		idle.frames( frames, 1, 1, 0 );
 		
-		run = new Animation( 5, true );
+		run = new Animation( 3, true );
 		run.frames( frames, 1, 0 );
 		
-		attack = new Animation( 7/ SPDSettings.speeder2(), false );
-		attack.frames( frames, 1, 4, 5 );
+		attack = new Animation( 13/ SPDSettings.speeder2(), false );
+		attack.frames( frames, 1, 3, 1, 3 );
 		
 		die = new Animation( 11, false );
-		die.frames( frames, 6, 7, 8, 9 );
+		die.frames( frames, 4, 5, 6, 7, 8 );
 
 		dance = new Animation( 7, true );
-		dance.frames( frames, 2, 4, 3 );
+		dance.frames( frames, 0, 2, 1, 3 );
 
 		play( idle );
 	}
@@ -57,14 +57,6 @@ public class DancingSkeletonSprite extends MobSprite {
 	public void dance(int pos){
 		turnTo(ch.pos, pos);
 		play(dance);
-	}
-
-	@Override
-	public void die() {
-		super.die();
-		if (Dungeon.level.heroFOV[ch.pos]) {
-			emitter().burst( Speck.factory( Speck.BONE ), 3 );
-		}
 	}
 
 	@Override

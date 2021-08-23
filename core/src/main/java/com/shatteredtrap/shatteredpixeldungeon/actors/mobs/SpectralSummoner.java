@@ -113,6 +113,7 @@ public class SpectralSummoner extends Mob {
 			test.pos = Random.Int(Dungeon.level.length());
 		} while (
 				Dungeon.level.solid[test.pos] ||
+						Dungeon.level.pit[test.pos] ||
 						Dungeon.level.distance(test.pos, Dungeon.hero.pos) < 8 ||
 						Actor.findChar(test.pos) != null);
 		GameScene.add( test );

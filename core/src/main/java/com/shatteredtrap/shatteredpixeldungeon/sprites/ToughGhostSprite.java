@@ -33,18 +33,18 @@ public class ToughGhostSprite extends MobSprite {
 		texture( Assets.TOUGHGHOST );
 
 		TextureFilm frames = new TextureFilm( texture, 16, 16 );
-		
-		idle = new Animation( 2, true );
-		idle.frames( frames, 0, 0, 0, 1, 0, 0, 0, 1, 1 );
-		
-		run = new Animation( 7, true );
-		run.frames( frames, 2, 4, 8 );
-		
-		attack = new Animation( 10 / SPDSettings.speeder2(), false );
-		attack.frames( frames, 2, 4, 3 );
-		
-		die = new Animation( 8, false );
-		die.frames( frames, 5, 6, 7, 9 );
+
+        idle = new Animation( 5, true );
+        idle.frames( frames, 0, 1 );
+
+        run = new Animation( 10, true );
+        run.frames( frames, 0, 1 );
+
+        attack = new Animation( 10/ SPDSettings.speeder2(), false );
+        attack.frames( frames, 0, 2, 3 );
+
+        die = new Animation( 8, false );
+        die.frames( frames, 0, 4, 5, 6, 7 );
 		
 		play( idle );
 	}

@@ -36,6 +36,7 @@ import com.shatteredtrap.shatteredpixeldungeon.items.potions.brews.ShockingBrew;
 import com.shatteredtrap.shatteredpixeldungeon.scenes.GameScene;
 import com.shatteredtrap.shatteredpixeldungeon.sprites.RatSprite;
 import com.shatteredtrap.shatteredpixeldungeon.sprites.ShockerBlockSprite;
+import com.shatteredtrap.shatteredpixeldungeon.utils.GLog;
 import com.watabou.noosa.Camera;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.PathFinder;
@@ -67,21 +68,24 @@ public class ShockerBlock extends Mob {
 
     @Override
     protected float attackDelay() {
-        return super.attackDelay()*0.25f;
+        return super.attackDelay()*0.3334f;
     }
 
 	@Override
 	public int attackProc( Char enemy, int damage ) {
-		int dm = Random.NormalIntRange( 2, 5 );
 		if (Dungeon.level.water[enemy.pos] && !enemy.flying) {
-			dm = Random.NormalIntRange( 5, 14 );
+			int dm = Random.NormalIntRange( 4, 11 );
 			if(enemy==Dungeon.hero){
 				Camera.main.shake( 3, 0.5f );
 			}
+			enemy.damage( dm, new ToughGhost.Damamdawawd() );
+			enemy.sprite.centerEmitter().burst( SparkParticle.FACTORY, dm );
 			Sample.INSTANCE.play( Assets.SND_LIGHTNING );
+			if (!enemy.isAlive() && enemy == Dungeon.hero) {
+				Dungeon.fail( getClass() );
+				GLog.n( "You were killed by electricity..." );
+			}
 		}
-		enemy.damage( dm, new ToughGhost.Damamdawawd() );
-		enemy.sprite.centerEmitter().burst( SparkParticle.FACTORY, dm );
 
 		for (int i = 0; i < PathFinder.NEIGHBOURS8.length; i++) {
 			int ofs = PathFinder.NEIGHBOURS8[i];
