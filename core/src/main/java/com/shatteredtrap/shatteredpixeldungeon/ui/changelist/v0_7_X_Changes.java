@@ -27,6 +27,14 @@ import com.shatteredtrap.shatteredpixeldungeon.effects.BadgeBanner;
 import com.shatteredtrap.shatteredpixeldungeon.items.DemonBeacon;
 import com.shatteredtrap.shatteredpixeldungeon.items.Gold;
 import com.shatteredtrap.shatteredpixeldungeon.items.Honeypot;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.LeatherTrapperArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.LeatherWardenArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.MailArcaneArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.MailWarArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.PlateBloodArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.PlateTimeArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.ScaleCrystalArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.ScaleSolarArmor;
 import com.shatteredtrap.shatteredpixeldungeon.items.armor.glyphs.Stone;
 import com.shatteredtrap.shatteredpixeldungeon.items.artifacts.AlchemistsToolkit;
 import com.shatteredtrap.shatteredpixeldungeon.items.artifacts.DriedRose;
@@ -90,6 +98,8 @@ public class v0_7_X_Changes {
 		addModChanges(changeInfos);
 		addTrapChanges(changeInfos);
 		addEnemyChanges(changeInfos);
+		addNewTrapChanges(changeInfos);
+		addArmorChanges(changeInfos);
 		//add_v0_7_4_Changes(changeInfos);
 		//add_v0_7_3_Changes(changeInfos);
 		//add_v0_7_2_Changes(changeInfos);
@@ -156,9 +166,7 @@ public class v0_7_X_Changes {
 						"Berserker's anger adds twice as much damage."));
 
 		changes.addButton( new ChangeButton(new Image(Assets.TILES_SEWERS, 1*16, 6*16, 16, 16), "New level feelings",
-				"There are two new level feelings:\n\n" +
-						"-one that spawns animated statues and decorates hallways\n\n" +
-						"-one that spawns more traps, enemies and loot"));
+				"There is a new level feeling that spawns animated statues and decorates hallways"));
 
 		changes.addButton( new ChangeButton(new ItemSprite(ItemSpriteSheet.LOOTBAG, new ItemSprite.Glowing(0xFFFFFF)), "Minibosses",
 				"There are new randomly appearing minibosses that may be found resting somewhere in the dungeon.\n\n" +
@@ -206,11 +214,11 @@ public class v0_7_X_Changes {
 				"Guidebook pages and huntress are now unlocked at start. There are new badges that are awarded for reclaiming traps and attaining trapskill."));
 
 		changes.addButton( new ChangeButton( new Blandfruit().imbuePotion(new PotionOfHealing()),
-				"A single sunfruit is guaranteed to spawn in the first floor to provide healing for early game."));
+				"You start with a sunfruit instead of a food ration to provide some early game healing."));
 
 		changes.addButton( new ChangeButton( new WandOfSturdyBolt(),
 				"A new wand that replaces the wand of warding.\n\n" +
-						"Zaps from the wand deal damage equal to the hero's damage reduction roll and are increased by 20% for each upgrade level on the wand."));
+						"Zaps from the wand deal damage equal to the hero's damage reduction roll and are increased by 25% for each upgrade level on the wand."));
 
 		changes.addButton( new ChangeButton( new AlchemistsToolkit(),
 				"A new artifact that replaces the alchemist's toolkit.\n\n" +
@@ -218,6 +226,9 @@ public class v0_7_X_Changes {
 						"Equipment can be sacrificed to upgrade the crown, which gives it more charges and makes it deal extra damage to pulled enemies (not to the hero).\n\n" +
 						"It does not regain charges automatically, but instead regains all charges at once when a trap is reclaimed or when the artifact is upgraded.\n\n" +
 						"A cursed crown constantly tries to activate traps in a 3x3 radius around the hero."));
+
+		changes.addButton( new ChangeButton( new ItemSprite(ItemSpriteSheet.ARMOR_SCALE_CRYSTAL, null), "Armor variants",
+				"40% of armor found are special variants that have some flat bonus attached to them but require an additional point of strength to wear."));
 	}
 
 	public static void addEnemyChanges( ArrayList<ChangeInfo> changeInfos ){
@@ -425,13 +436,21 @@ public class v0_7_X_Changes {
 		changes.addButton( new ChangeButton( new Image(Assets.TERRAIN_FEATURES, 6*16, 4*16, 16, 16), "Frost curse trap",
 				"Frost curse trap is a new rare hidden trap.\n\n" +
 						"It affects creatures in a 3x3 are with a frost curse.\n\n" +
-						"The curse acts as a countdown, freezing the affected creature after it ends.\n\n" +
-						"The length of the countdown varies a lot, though the freeze is not very significant."));
+						"The curse constantly chills the affected creatures."));
 
 		changes.addButton( new ChangeButton( new Image(Assets.TERRAIN_FEATURES, 5*16, 6*16, 16, 16), "Transmutation trap",
 				"Transmutation trap is a very rare hidden trap.\n\n" +
 						"It transmutes random items in inventory if the hero steps on it.\n\n" +
 						"An item can be thrown on the trap to conveniently transmute it."));
+
+		changes.addButton( new ChangeButton( new Image(Assets.TERRAIN_FEATURES, 2*16, 8*16, 16, 16), "Bargain trap",
+				"Bargain trap is a new uncommon hidden trap.\n\n" +
+						"It forces the hero to buy a random item at a discount.\n\n" +
+						"The discount is 0-65%. The trap fails to work if the hero doesn't have enough gold."));
+
+		changes.addButton( new ChangeButton( new Image(Assets.TERRAIN_FEATURES, 7*16, 8*16, 16, 16), "Multi trap",
+				"Multi trap is a new very rare visible trap.\n\n" +
+						"It replicates 5 random trap effects that are found in the floor."));
 
 		changes = new ChangeInfo("", false, null);
 		changes.hardlight( Window.TITLE_COLOR );
@@ -499,6 +518,93 @@ public class v0_7_X_Changes {
 				"Slicing trap is a new rare hidden trap.\n\n" +
 						"It cuts the target's current HP in half.\n\n" +
 						"Bosses are resistant to this effect, losing only a quarter of their current health."));
+	}
+
+	public static void addNewTrapChanges( ArrayList<ChangeInfo> changeInfos ){
+		ChangeInfo changes = new ChangeInfo("Unknown traps", true, "");
+		changes.hardlight( Window.TITLE_COLOR );
+		changeInfos.add(changes);
+
+		//PART 1
+
+		changes = new ChangeInfo("", false, null);
+		changes.hardlight( Window.TITLE_COLOR );
+		changeInfos.add(changes);
+
+		changes.addButton( new ChangeButton( new Image(Assets.TERRAIN_FEATURES, 0*16, 8*16, 16, 16), "Red trap",
+				"An unknown trap."));
+
+		changes.addButton( new ChangeButton( new Image(Assets.TERRAIN_FEATURES, 1*16, 8*16, 16, 16), "Orange trap",
+				"An unknown trap."));
+
+		changes.addButton( new ChangeButton( new Image(Assets.TERRAIN_FEATURES, 8*16, 8*16, 16, 16), "Yellow trap",
+				"This trap has already been invented by a successful adventurer."));
+
+		changes.addButton( new ChangeButton( new Image(Assets.TERRAIN_FEATURES, 3*16, 8*16, 16, 16), "Green trap",
+				"An unknown trap."));
+
+		changes.addButton( new ChangeButton(Icons.get(Icons.WARNING), "Unknown trap contest",
+				"Beat the true ending of the game to get your trap concept implemented in the game by the mod developer!"));
+
+		//PART 2
+
+		changes = new ChangeInfo("", false, null);
+		changes.hardlight( Window.TITLE_COLOR );
+		changeInfos.add(changes);
+
+		changes.addButton( new ChangeButton( new Image(Assets.TERRAIN_FEATURES, 4*16, 8*16, 16, 16), "Teal trap",
+				"An unknown trap."));
+
+		changes.addButton( new ChangeButton( new Image(Assets.TERRAIN_FEATURES, 5*16, 8*16, 16, 16), "Violet trap",
+				"An unknown trap."));
+
+		changes.addButton( new ChangeButton( new Image(Assets.TERRAIN_FEATURES, 6*16, 8*16, 16, 16), "White trap",
+				"An unknown trap."));
+
+		changes.addButton( new ChangeButton( new Image(Assets.TERRAIN_FEATURES, 8*16, 8*16, 16, 16), "Grey trap",
+				"This trap has already been invented by a successful adventurer."));
+	}
+
+	public static void addArmorChanges( ArrayList<ChangeInfo> changeInfos ){
+		ChangeInfo changes = new ChangeInfo("New armor variants", true, "");
+		changes.hardlight( Window.TITLE_COLOR );
+		changeInfos.add(changes);
+
+		//PART 1
+
+		changes = new ChangeInfo("", false, null);
+		changes.hardlight( Window.TITLE_COLOR );
+		changeInfos.add(changes);
+
+		changes.addButton( new ChangeButton( new LeatherTrapperArmor(),
+				"+1 trapskill"));
+
+		changes.addButton( new ChangeButton( new LeatherWardenArmor(),
+				"Blocking power up to scale-plate when standing on grass"));
+
+		changes.addButton( new ChangeButton( new MailWarArmor(),
+				"+15% weapon damage"));
+
+		changes.addButton( new ChangeButton( new MailArcaneArmor(),
+				"+25% natural wand recharge rate"));
+
+		//PART 2
+
+		changes = new ChangeInfo("", false, null);
+		changes.hardlight( Window.TITLE_COLOR );
+		changeInfos.add(changes);
+
+		changes.addButton( new ChangeButton( new ScaleCrystalArmor(),
+				"+25% accuracy"));
+
+		changes.addButton( new ChangeButton( new ScaleSolarArmor(),
+				"Non-combat damage reduced by 0-100%, prioritizing lower resistance values"));
+
+		changes.addButton( new ChangeButton( new PlateBloodArmor(),
+				"Double natural life regeneration"));
+
+		changes.addButton( new ChangeButton( new PlateTimeArmor(),
+				"20% chance for weapon attacks to happen instantly"));
 	}
 
 	public static void add_v0_7_4_Changes( ArrayList<ChangeInfo> changeInfos ){

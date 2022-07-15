@@ -333,12 +333,30 @@ public class ItemSpriteSheet {
 	public static final int ARMOR_MAGE      = ARMOR+6;
 	public static final int ARMOR_ROGUE     = ARMOR+7;
 	public static final int ARMOR_HUNTRESS  = ARMOR+8;
+
+	public static final int ARMOR_LEATHER_NATURE = ARMOR + 17;
+	public static final int ARMOR_LEATHER_TRAP = ARMOR + 21;
+	public static final int ARMOR_MAIL_WAR = ARMOR + 18;
+	public static final int ARMOR_MAIL_ARCANE = ARMOR + 22;
+	public static final int ARMOR_SCALE_CRYSTAL = ARMOR + 19;
+	public static final int ARMOR_SCALE_SUN = ARMOR + 23;
+	public static final int ARMOR_PLATE_BLOOD = ARMOR + 20;
+	public static final int ARMOR_PLATE_TIME = ARMOR + 24;
+
 	static{
 		assignItemRect(ARMOR_CLOTH,     15, 12);
 		assignItemRect(ARMOR_LEATHER,   14, 13);
+		assignItemRect(ARMOR_LEATHER_NATURE,   14, 13);
+		assignItemRect(ARMOR_LEATHER_TRAP,   14, 13);
 		assignItemRect(ARMOR_MAIL,      14, 12);
+		assignItemRect(ARMOR_MAIL_WAR,      14, 12);
+		assignItemRect(ARMOR_MAIL_ARCANE,      14, 12);
 		assignItemRect(ARMOR_SCALE,     14, 11);
+		assignItemRect(ARMOR_SCALE_CRYSTAL,     14, 11);
+		assignItemRect(ARMOR_SCALE_SUN,     14, 11);
 		assignItemRect(ARMOR_PLATE,     12, 12);
+		assignItemRect(ARMOR_PLATE_BLOOD,     12, 12);
+		assignItemRect(ARMOR_PLATE_TIME,     12, 12);
 		assignItemRect(ARMOR_WARRIOR,   12, 12);
 		assignItemRect(ARMOR_MAGE,      15, 15);
 		assignItemRect(ARMOR_ROGUE,     14, 12);

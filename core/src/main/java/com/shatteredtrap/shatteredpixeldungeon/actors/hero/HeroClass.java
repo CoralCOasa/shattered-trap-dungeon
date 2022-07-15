@@ -33,19 +33,29 @@ import com.shatteredtrap.shatteredpixeldungeon.items.RatBeacon2;
 import com.shatteredtrap.shatteredpixeldungeon.items.RatDust;
 import com.shatteredtrap.shatteredpixeldungeon.items.SpectralGem;
 import com.shatteredtrap.shatteredpixeldungeon.items.armor.ClothArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.LeatherTrapperArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.LeatherWardenArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.MailArcaneArmor;
 import com.shatteredtrap.shatteredpixeldungeon.items.armor.MailArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.MailWarArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.PlateBloodArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.PlateTimeArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.ScaleCrystalArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.ScaleSolarArmor;
 import com.shatteredtrap.shatteredpixeldungeon.items.artifacts.AlchemistsToolkit;
 import com.shatteredtrap.shatteredpixeldungeon.items.artifacts.CloakOfShadows;
 import com.shatteredtrap.shatteredpixeldungeon.items.bags.PotionBandolier;
 import com.shatteredtrap.shatteredpixeldungeon.items.bags.ScrollHolder;
 import com.shatteredtrap.shatteredpixeldungeon.items.bags.VelvetPouch;
 import com.shatteredtrap.shatteredpixeldungeon.items.bags.WeaponRack;
+import com.shatteredtrap.shatteredpixeldungeon.items.food.Blandfruit;
 import com.shatteredtrap.shatteredpixeldungeon.items.food.Food;
 import com.shatteredtrap.shatteredpixeldungeon.items.food.SmallRation;
 import com.shatteredtrap.shatteredpixeldungeon.items.potions.PotionOfHealing;
 import com.shatteredtrap.shatteredpixeldungeon.items.potions.PotionOfInvisibility;
 import com.shatteredtrap.shatteredpixeldungeon.items.potions.PotionOfLiquidFlame;
 import com.shatteredtrap.shatteredpixeldungeon.items.potions.PotionOfMindVision;
+import com.shatteredtrap.shatteredpixeldungeon.items.potions.PotionOfStrength;
 import com.shatteredtrap.shatteredpixeldungeon.items.potions.elixirs.ElixirOfTrapSkill;
 import com.shatteredtrap.shatteredpixeldungeon.items.scrolls.ScrollOfIdentify;
 import com.shatteredtrap.shatteredpixeldungeon.items.scrolls.ScrollOfLullaby;
@@ -115,10 +125,21 @@ public enum HeroClass {
 
 	private static void initCommon( Hero hero ) {
 		Item i = new ClothArmor().identify();
-		//new ReclaimTrap().quantity(6).collect();
+		//duDungeon.gold = 200;
+		//new LeatherTrapperArmor().identify().collect();
+		//new LeatherWardenArmor().identify().upgrade().collect();
+		//new MailWarArmor().identify().collect();
+		//new MailArcaneArmor().identify().collect();
+		//new ScaleCrystalArmor().identify().collect();
+		//new ScaleSolarArmor().identify().collect();
+		//new PlateTimeArmor().identify().collect();
+		//new PlateBloodArmor().identify().collect();
+		//new PotionOfStrength().quantity(20).identify().collect();
+		//new ReclaimTrap().quantity(12).collect();
+		//new ScrollOfMagicMapping().identify().collect();
+		//new WandOfSturdyBolt().identify().upgrade().collect();
 		//new ElixirOfTrapSkill().quantity(6).collect();
 		//new TreasureBag().quantity(63).collect();
-		//new ScrollOfMagicMapping().identify().collect();
 		//new WandOfMagicMissile().upgrade(20).identify().collect();
 		//new ClothArmor().upgrade(80).identify().collect();
 		//new WandOfSturdyBolt().identify().upgrade().collect();
@@ -130,7 +151,7 @@ public enum HeroClass {
 		//new DemonBeacon().quantity(3).collect();
 		if (!Challenges.isItemBlocked(i)) hero.belongings.armor = (ClothArmor)i;
 
-		i = new Food();
+		i = new Blandfruit().imbuePotion(new PotionOfHealing() );
 		if (!Challenges.isItemBlocked(i)) i.collect();
 
 		if (Dungeon.isChallenged(Challenges.NO_FOOD)){

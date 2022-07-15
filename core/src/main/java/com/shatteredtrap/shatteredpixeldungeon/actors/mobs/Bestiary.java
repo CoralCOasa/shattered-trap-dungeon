@@ -44,9 +44,9 @@ public class Bestiary {
 			case 1: default:
 				//10x rat
 				return new ArrayList<Class<? extends Mob>>(Arrays.asList(
-						DancingSkeleton.class));
-						//Rat.class, Rat.class, Rat.class, Rat.class, Rat.class,
-						//Rat.class, Rat.class, DancingSkeleton.class, DancingSkeleton.class, DancingSkeleton.class));
+						//KeyChain.class));
+						Rat.class, Rat.class, Rat.class, Rat.class, Rat.class,
+						Rat.class, Rat.class, DancingSkeleton.class, DancingSkeleton.class, DancingSkeleton.class));
 			case 2:
 				//3x rat, 3x gnoll
 				return new ArrayList<>(Arrays.asList(Rat.class, Rat.class, Rat.class,

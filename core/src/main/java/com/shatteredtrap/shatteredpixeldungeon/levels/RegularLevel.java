@@ -247,6 +247,7 @@ public abstract class RegularLevel extends Level {
 		boolean statue1spawn = false;
 		boolean statue2spawn = false;
 		boolean eliteSpawned = false;
+		boolean statuesSpawned = false;
 
 		Mob nob = null;
 		//elite enemies
@@ -358,17 +359,18 @@ public abstract class RegularLevel extends Level {
 				if(Random.Int( 4 )!=0){
 					goblinSpawned=true;
 				}
-			}else if(!statue1spawn&&this.feeling==Feeling.STATUE) {
+			}else if(!statue1spawn&&this.feeling==Feeling.STATUE && !Dungeon.statuesSpawned) {
 				mob = new Statue();
 				mob.state=mob.SLEEPING;
 				mobsToSpawn++;
 				statue1spawn=true;
-			}else if (!statue2spawn&&this.feeling==Feeling.STATUE) {
+			}else if (!statue2spawn&&this.feeling==Feeling.STATUE && !Dungeon.statuesSpawned) {
 				mob = new Statue();
 				mob.state=mob.SLEEPING;
 				mobsToSpawn++;
 				if(Random.Int(2)==0){
 					statue2spawn=true;
+					Dungeon.setStatuesSpawned(true);
 				}
 			}else if(nob!=null && !eliteSpawned){
 				mob = nob;

@@ -42,21 +42,21 @@ import com.watabou.utils.Random;
 
 public class FrostCurseTrap extends Trap {
 
-	{
-		color = WHITE;
-		shape = DIAMOND;
-	}
+    {
+        color = WHITE;
+        shape = DIAMOND;
+    }
 
-	@Override
-	public void activate() {
-		Sample.INSTANCE.play(Assets.SND_CURSED, 0.7f, 0.7f, 1.5f);
-		for( int i : PathFinder.NEIGHBOURS9) {
-			CellEmitter.get(pos+i).burst(ShadowParticle.UP, 2);
-			CellEmitter.center(pos+i).burst(Speck.factory(Speck.BLIZZARD), 1);
-			Char ch = Actor.findChar( pos+i );
-			if (ch != null){
-				Buff.affect(ch, FrostCurse.class, 1+ Random.Int( 11 )+Random.Int( 6 )*Random.Int( 6 )+Math.round(Math.pow(Random.Int( 6 ),Random.Int( 6 ))));
-			}
-		}
-	}
+    @Override
+    public void activate() {
+        Sample.INSTANCE.play(Assets.SND_CURSED, 0.7f, 0.7f, 1.5f);
+        for (int i : PathFinder.NEIGHBOURS9) {
+            CellEmitter.get(pos + i).burst(ShadowParticle.UP, 2);
+            CellEmitter.center(pos + i).burst(Speck.factory(Speck.BLIZZARD), 1);
+            Char ch = Actor.findChar(pos + i);
+            if (ch != null) {
+                Buff.affect(ch, FrostCurse.class).set(10 + Random.Int(21));
+            }
+        }
+    }
 }

@@ -242,9 +242,11 @@ public abstract class Level implements Bundlable {
 					break;
 					case 4:
 						if(Random.Int( 2 )==0){
-							feeling = Feeling.STUFF;
+							//feeling = Feeling.STUFF;
 						}else{
-							feeling = Feeling.STATUE;
+							if(!Dungeon.statuesSpawned){
+								feeling = Feeling.STATUE;
+							}
 						}
 						break;
 				}

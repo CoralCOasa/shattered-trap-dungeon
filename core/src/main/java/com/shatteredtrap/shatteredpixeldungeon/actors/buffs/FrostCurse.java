@@ -21,49 +21,94 @@
 
 package com.shatteredtrap.shatteredpixeldungeon.actors.buffs;
 
+import com.shatteredtrap.shatteredpixeldungeon.Badges;
 import com.shatteredtrap.shatteredpixeldungeon.Dungeon;
-import com.shatteredtrap.shatteredpixeldungeon.items.Item;
+import com.shatteredtrap.shatteredpixeldungeon.actors.Char;
+import com.shatteredtrap.shatteredpixeldungeon.actors.blobs.Blob;
+import com.shatteredtrap.shatteredpixeldungeon.actors.blobs.Freezing;
+import com.shatteredtrap.shatteredpixeldungeon.actors.hero.Hero;
+import com.shatteredtrap.shatteredpixeldungeon.effects.CellEmitter;
+import com.shatteredtrap.shatteredpixeldungeon.effects.particles.PoisonParticle;
 import com.shatteredtrap.shatteredpixeldungeon.messages.Messages;
-import com.shatteredtrap.shatteredpixeldungeon.sprites.CharSprite;
+import com.shatteredtrap.shatteredpixeldungeon.scenes.GameScene;
 import com.shatteredtrap.shatteredpixeldungeon.ui.BuffIndicator;
-import com.watabou.utils.Random;
+import com.shatteredtrap.shatteredpixeldungeon.utils.GLog;
+import com.watabou.noosa.Image;
+import com.watabou.utils.Bundle;
 
-public class FrostCurse extends FlavourBuff {
+public class FrostCurse extends Buff {
+
+	protected float left;
+
+	private static final String LEFT	= "left";
 
 	{
 		type = buffType.NEGATIVE;
-		announced = false;
+		announced = true;
 	}
 
-	public static final float DURATION = 10f;
+	@Override
+	public void storeInBundle( Bundle bundle ) {
+		super.storeInBundle( bundle );
+		bundle.put( LEFT, left );
+
+	}
+
+	@Override
+	public void restoreFromBundle( Bundle bundle ) {
+		super.restoreFromBundle( bundle );
+		left = bundle.getFloat( LEFT );
+	}
+
+	public void set( float duration ) {
+		this.left = Math.max(duration, left);
+	}
+
+	public void extend( float duration ) {
+		this.left += duration;
+	}
 
 	@Override
 	public int icon() {
-		return BuffIndicator.FROST;
+		return BuffIndicator.CORRUPT;
 	}
 
-	@Override
-	public void fx(boolean on) {
-		if (on) target.sprite.add( CharSprite.State.MARKED );
-		else target.sprite.remove( CharSprite.State.MARKED );
-	}
-
-	@Override
-	public void detach() {
-		if(target.isAlive()) {
-			Buff.affect(target, Frost.class, 15 + Random.Int(16));
-		}
-		super.detach();
-	}
+	//@Override
+	//public void tintIcon(Image icon) {
+	//	icon.hardlight(0.6f, 0.2f, 0.6f);
+	//}
 
 	@Override
 	public String toString() {
 		return Messages.get(this, "name");
 	}
 
+	//@Override
+	//public String heroMessage() {
+	//	return Messages.get(this, "heromsg");
+	//}
+
 	@Override
 	public String desc() {
-		return Messages.get(this, "desc", dispTurns());
+		return Messages.get(this, "desc", dispTurns(left));
 	}
-	
+
+	@Override
+	public boolean act() {
+		if (target.isAlive()) {
+			GameScene.add(Blob.seed(target.pos, 2, Freezing.class));
+			spend( TICK );
+
+			if ((left -= TICK) <= 0) {
+				detach();
+			}
+
+		} else {
+
+			detach();
+
+		}
+
+		return true;
+	}
 }

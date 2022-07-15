@@ -25,6 +25,7 @@ import com.shatteredtrap.shatteredpixeldungeon.Assets;
 import com.shatteredtrap.shatteredpixeldungeon.Dungeon;
 import com.shatteredtrap.shatteredpixeldungeon.actors.mobs.npcs.Wandmaker;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.AnnihilationTrap;
+import com.shatteredtrap.shatteredpixeldungeon.levels.traps.BargainTrap;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.BlazingTrap;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.BlizzardTrap;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.CannonTrap;
@@ -53,6 +54,7 @@ import com.shatteredtrap.shatteredpixeldungeon.levels.traps.InfernoTrap;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.LotteryTrap;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.MarkingTrap;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.MimicTrap;
+import com.shatteredtrap.shatteredpixeldungeon.levels.traps.MultiTrap;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.OvergrowthTrap;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.PitfallTrap;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.RearmTrap;
@@ -151,7 +153,7 @@ public class PrisonLevel extends RegularLevel {
 						InfernoTrap.class, BlizzardTrap.class, FloodTrap.class, LotteryTrap.class,
 						HealingTrap.class, SpookTrap.class, ChestnutTrap.class, SharpnelTrap.class, OvergrowthTrap.class, GoblinTrap.class, DreamTrap.class, CannonTrap.class, EnchantingTrap.class,
 						SlicingTrap.class, FuryTrap.class, FrostCurseTrap.class, MarkingTrap.class,
-						TransmutationTrap.class, RearmTrap.class
+						TransmutationTrap.class, RearmTrap.class, BargainTrap.class, MultiTrap.class
 				};
 	}
 
@@ -170,7 +172,7 @@ public class PrisonLevel extends RegularLevel {
 						2, 3, 3, 12,
 						3, 3, 5, 2,
 						3, 6, 6, 2, 1, 4, 1,
-						4, 5, 4, 3, 1, 3};
+						4, 5, 4, 3, 1, 3, 8, 1};
 	}
 
 	@Override

@@ -26,9 +26,17 @@ import com.shatteredtrap.shatteredpixeldungeon.ShatteredPixelDungeon;
 import com.shatteredtrap.shatteredpixeldungeon.items.armor.Armor;
 import com.shatteredtrap.shatteredpixeldungeon.items.armor.ClothArmor;
 import com.shatteredtrap.shatteredpixeldungeon.items.armor.LeatherArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.LeatherTrapperArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.LeatherWardenArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.MailArcaneArmor;
 import com.shatteredtrap.shatteredpixeldungeon.items.armor.MailArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.MailWarArmor;
 import com.shatteredtrap.shatteredpixeldungeon.items.armor.PlateArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.PlateBloodArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.PlateTimeArmor;
 import com.shatteredtrap.shatteredpixeldungeon.items.armor.ScaleArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.ScaleCrystalArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.ScaleSolarArmor;
 import com.shatteredtrap.shatteredpixeldungeon.items.artifacts.AlchemistsToolkit;
 import com.shatteredtrap.shatteredpixeldungeon.items.artifacts.Artifact;
 import com.shatteredtrap.shatteredpixeldungeon.items.artifacts.CapeOfThorns;
@@ -558,7 +566,41 @@ public class Generator {
 
 		try {
 			Armor a = (Armor)Category.ARMOR.classes[Random.chances(floorSetTierProbs[floorSet])].newInstance();
+
+			//here is the spaghetti, for I am an elite programmer
+
+			int roll = Random.Int(4);
+			if (roll==0){
+				if (a instanceof LeatherArmor){
+					a = new LeatherTrapperArmor();
+				}
+				if (a instanceof MailArmor){
+					a = new MailWarArmor();
+				}
+				if (a instanceof ScaleArmor){
+					a = new ScaleCrystalArmor();
+				}
+				if (a instanceof PlateArmor){
+					a = new PlateBloodArmor();
+				}
+			}
+			if (roll==1){
+				if (a instanceof LeatherArmor){
+					a = new LeatherWardenArmor();
+				}
+				if (a instanceof MailArmor){
+					a = new MailArcaneArmor();
+				}
+				if (a instanceof ScaleArmor){
+					a = new ScaleSolarArmor();
+				}
+				if (a instanceof PlateArmor){
+					a = new PlateTimeArmor();
+				}
+			}
+
 			a.random();
+
 			return a;
 		} catch (Exception e) {
 			ShatteredPixelDungeon.reportException(e);

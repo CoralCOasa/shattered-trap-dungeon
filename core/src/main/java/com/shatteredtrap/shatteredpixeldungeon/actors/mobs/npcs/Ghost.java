@@ -37,9 +37,17 @@ import com.shatteredtrap.shatteredpixeldungeon.effects.Speck;
 import com.shatteredtrap.shatteredpixeldungeon.items.Generator;
 import com.shatteredtrap.shatteredpixeldungeon.items.armor.Armor;
 import com.shatteredtrap.shatteredpixeldungeon.items.armor.LeatherArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.LeatherTrapperArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.LeatherWardenArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.MailArcaneArmor;
 import com.shatteredtrap.shatteredpixeldungeon.items.armor.MailArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.MailWarArmor;
 import com.shatteredtrap.shatteredpixeldungeon.items.armor.PlateArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.PlateBloodArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.PlateTimeArmor;
 import com.shatteredtrap.shatteredpixeldungeon.items.armor.ScaleArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.ScaleCrystalArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.ScaleSolarArmor;
 import com.shatteredtrap.shatteredpixeldungeon.items.weapon.Weapon;
 import com.shatteredtrap.shatteredpixeldungeon.items.weapon.melee.MeleeWeapon;
 import com.shatteredtrap.shatteredpixeldungeon.items.weapon.melee.Shortsword;
@@ -277,15 +285,39 @@ public class Ghost extends NPC {
 				if (itemTierRoll < 0.5f) {
 					wepTier = 2;
 					armor = new LeatherArmor();
+					int maybe = Random.Int(4);
+					if(maybe == 1){
+						armor = new LeatherTrapperArmor();
+					}else if(maybe == 2){
+						armor = new LeatherWardenArmor();
+					}
 				} else if (itemTierRoll < 0.8f) {
 					wepTier = 3;
 					armor = new MailArmor();
+					int maybe = Random.Int(4);
+					if(maybe == 1){
+						armor = new MailWarArmor();
+					}else if(maybe == 2){
+						armor = new MailArcaneArmor();
+					}
 				} else if (itemTierRoll < 0.95f) {
 					wepTier = 4;
 					armor = new ScaleArmor();
+					int maybe = Random.Int(4);
+					if(maybe == 1){
+						armor = new ScaleCrystalArmor();
+					}else if(maybe == 2){
+						armor = new ScaleSolarArmor();
+					}
 				} else {
 					wepTier = 5;
 					armor = new PlateArmor();
+					int maybe = Random.Int(4);
+					if(maybe == 1){
+						armor = new PlateBloodArmor();
+					}else if(maybe == 2){
+						armor = new PlateTimeArmor();
+					}
 				}
 
 				try {

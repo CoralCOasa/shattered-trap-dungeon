@@ -168,6 +168,7 @@ public class Dungeon {
 	public static boolean elite3spawned = false;
 	public static boolean elite4spawned = false;
 	public static boolean elite5spawned = false;
+	public static boolean statuesSpawned = false;
 	
 	public static void init() {
 
@@ -485,6 +486,7 @@ public class Dungeon {
 	private static final String ELITE3SPAWNED = "elite3spawned";
 	private static final String ELITE4SPAWNED = "elite4spawned";
 	private static final String ELITE5SPAWNED = "elite5spawned";
+	private static final String STATUESSPAWNED = "statuesspawned";
 	
 	public static void saveGame( int save ) throws IOException {
 		try {
@@ -503,6 +505,7 @@ public class Dungeon {
 			bundle.put( ELITE3SPAWNED, elite3spawned );
 			bundle.put( ELITE4SPAWNED, elite4spawned );
 			bundle.put( ELITE5SPAWNED, elite5spawned );
+			bundle.put( STATUESSPAWNED, statuesSpawned );
 
 			for (int d : droppedItems.keyArray()) {
 				bundle.put(Messages.format(DROPPED, d), droppedItems.get(d));
@@ -593,6 +596,8 @@ public class Dungeon {
 		elite3spawned = bundle.getBoolean("ELITE3SPAWNED");
 		elite4spawned = bundle.getBoolean("ELITE4SPAWNED");
 		elite5spawned = bundle.getBoolean("ELITE5SPAWNED");
+
+		statuesSpawned = bundle.getBoolean("STATUESSPAWNED");
 
 		Actor.restoreNextID( bundle );
 
@@ -899,6 +904,10 @@ public class Dungeon {
 
 	public static void setElite5spawned(boolean b){
 		elite5spawned = b;
+	}
+
+	public static void setStatuesSpawned(boolean b){
+		statuesSpawned = b;
 	}
 
 }

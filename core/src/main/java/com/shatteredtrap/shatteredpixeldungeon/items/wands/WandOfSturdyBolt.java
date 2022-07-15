@@ -56,11 +56,11 @@ public class WandOfSturdyBolt extends DamageWand {
 	}
 
 	public float percent(int lvl){
-		return 100+20*lvl;
+		return 100+25*lvl;
 	}
 
 	public int percentint(int lvl){
-		return 100+20*lvl;
+		return 100+25*lvl;
 	}
 
 	@Override

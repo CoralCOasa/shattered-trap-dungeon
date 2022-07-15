@@ -23,6 +23,8 @@ package com.shatteredtrap.shatteredpixeldungeon.actors.buffs;
 
 import com.shatteredtrap.shatteredpixeldungeon.Dungeon;
 import com.shatteredtrap.shatteredpixeldungeon.actors.hero.Hero;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.PlateBloodArmor;
+import com.shatteredtrap.shatteredpixeldungeon.items.armor.ScaleSolarArmor;
 import com.shatteredtrap.shatteredpixeldungeon.items.artifacts.ChaliceOfBlood;
 
 public class Regeneration extends Buff {
@@ -45,6 +47,14 @@ public class Regeneration extends Buff {
 					target.HP += 1;
 					if (target.HP == regencap()) {
 						((Hero) target).resting = false;
+					}
+				}
+				if(Dungeon.hero.belongings.armor!=null&&Dungeon.hero.belongings.armor instanceof PlateBloodArmor){
+					if (target.HP > 0 && (lock == null || lock.regenOn())) {
+						target.HP += 1;
+						if (target.HP == regencap()) {
+							((Hero) target).resting = false;
+						}
 					}
 				}
 			}

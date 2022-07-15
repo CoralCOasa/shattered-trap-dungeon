@@ -35,16 +35,16 @@ public class KeyChainSprite extends MobSprite {
 		TextureFilm frames = new TextureFilm( texture, 16, 16 );
 		
 		idle = new Animation( 2, true );
-		idle.frames( frames, 0, 0, 5, 0, 0, 1 );
+		idle.frames( frames, 0, 0, 3, 2, 2, 3);
 		
-		run = new Animation( 7, true );
-		run.frames( frames, 2,3,2,3,2,3,0,5 );
+		run = new Animation( 4, true );
+		run.frames( frames, 0,1,2,1,3,1 );
 		
 		attack = new Animation( 12 / SPDSettings.speeder2(), false );
-		attack.frames( frames, 3, 1, 3, 4, 4 );
+		attack.frames( frames, 6,5,4,5,4 );
 		
 		die = new Animation( 6, false );
-		die.frames( frames, 1,6,7,8,9,10 );
+		die.frames( frames, 7,8,7,7,8 );
 		
 		play( idle );
 	}

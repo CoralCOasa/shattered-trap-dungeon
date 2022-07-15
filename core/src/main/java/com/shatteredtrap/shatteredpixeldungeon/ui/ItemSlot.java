@@ -289,7 +289,7 @@ public class ItemSlot extends Button {
 						//bottomRight.hardlight( 0xFFDA00 );
 					}
 				}
-			} else if(item instanceof ReclaimTrap2 && item.quantity()>0){
+			} else if(item instanceof ReclaimTrap2 && item.quantity()>0 && Dungeon.hero.belongings.getItem( ReclaimTrap2.class )!=null){
 				if(Dungeon.hero.getTrapSkill()>0){
 					if(Dungeon.hero.belongings.getItem( ReclaimTrap2.class ).isTrapStored()){
 						bottomRight.text( (Dungeon.hero.getCurrentTrapSkill2()+1)+"/"+(Dungeon.hero.getTrapSkill()+1));

@@ -32,6 +32,7 @@ import com.shatteredtrap.shatteredpixeldungeon.levels.Terrain;
 import com.shatteredtrap.shatteredpixeldungeon.levels.painters.Painter;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.AlarmTrap;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.AnnihilationTrap;
+import com.shatteredtrap.shatteredpixeldungeon.levels.traps.BargainTrap;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.BlazingTrap;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.BlizzardTrap;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.BurningTrap;
@@ -65,6 +66,7 @@ import com.shatteredtrap.shatteredpixeldungeon.levels.traps.InfernoTrap;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.LotteryTrap;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.MarkingTrap;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.MimicTrap;
+import com.shatteredtrap.shatteredpixeldungeon.levels.traps.MultiTrap;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.OozeTrap;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.OvergrowthTrap;
 import com.shatteredtrap.shatteredpixeldungeon.levels.traps.PitfallTrap;
@@ -156,7 +158,7 @@ public class RunestoneRoom extends SpecialRoom {
 					InfernoTrap.class, BlizzardTrap.class, FloodTrap.class, LotteryTrap.class,
 					HealingTrap.class, SpookTrap.class, ChestnutTrap.class, SharpnelTrap.class, OvergrowthTrap.class, GoblinTrap.class, DreamTrap.class, CannonTrap.class, EnchantingTrap.class,
 					SlicingTrap.class, FuryTrap.class, FrostCurseTrap.class, MarkingTrap.class,
-					TransmutationTrap.class, RearmTrap.class},
+					TransmutationTrap.class, RearmTrap.class, BargainTrap.class, MultiTrap.class},
 	};
 
 	private static Item prize( Level level ) {
